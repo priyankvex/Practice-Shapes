@@ -1,4 +1,4 @@
-package com.wordpress.priyankvex.practiceshapes;
+package com.wordpress.priyankvex.practiceshapes.view;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.wordpress.priyankvex.practiceshapes.R;
 
 public class MainActivity extends AppCompatActivity {
 
