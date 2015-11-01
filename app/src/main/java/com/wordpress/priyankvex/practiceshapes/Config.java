@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class Config {
 
+    public static String TAG = "PracticeShapes";
     public static String KEY_LEVEL = "level";
     public static String LEVEL_EASY = "easyLevel";
     public static String LEVEL_MEDIUM = "mediumLevel";

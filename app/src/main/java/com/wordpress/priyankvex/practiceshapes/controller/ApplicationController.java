@@ -3,6 +3,7 @@ package com.wordpress.priyankvex.practiceshapes.controller;
 import android.app.Application;
 import android.content.SharedPreferences;
 
+import com.orm.SugarApp;
 import com.wordpress.priyankvex.practiceshapes.Config;
 import com.wordpress.priyankvex.practiceshapes.R;
 import com.wordpress.priyankvex.practiceshapes.model.Shape;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * Created by priyank on 1/11/15.
  * Application controller for the app.
  */
-public class ApplicationController extends Application{
+public class ApplicationController extends SugarApp{
 
     public ArrayList<String> easyShapesPath;
     public static SharedPreferences mSharedPreferences;
@@ -23,8 +24,9 @@ public class ApplicationController extends Application{
         super.onCreate();
         mSharedPreferences = getApplicationContext().getSharedPreferences("prefs", MODE_PRIVATE);
         // Check is database has been initiated or not.
-        if (PreferencesController.getDatabaseInitStatus()){
+        if (!PreferencesController.getDatabaseInitStatus()){
             // Load the bitmap paths
+            easyShapesPath = new ArrayList<>();
             easyShapesPath.add("drawable://" + R.drawable.circle);
             easyShapesPath.add("drawable://" + R.drawable.circle);
             easyShapesPath.add("drawable://" + R.drawable.circle);
@@ -39,6 +41,7 @@ public class ApplicationController extends Application{
                 shape.setLevel(Config.LEVEL_EASY);
                 shape.save();
             }
+            PreferencesController.setDatabaseInitStatus(true);
         }
 
     }

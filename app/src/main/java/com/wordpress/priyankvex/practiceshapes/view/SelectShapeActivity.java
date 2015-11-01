@@ -7,6 +7,7 @@ import android.widget.GridView;
 import com.wordpress.priyankvex.practiceshapes.Config;
 import com.wordpress.priyankvex.practiceshapes.R;
 import com.wordpress.priyankvex.practiceshapes.controller.SelectShapeController;
+import com.wordpress.priyankvex.practiceshapes.controller.ShapesGridViewAdapter;
 import com.wordpress.priyankvex.practiceshapes.model.Shape;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class SelectShapeActivity extends AppCompatActivity {
     private String mShapeLevel;
     private ArrayList<Shape> mShapes;
     private GridView mGridView;
+    private ShapesGridViewAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class SelectShapeActivity extends AppCompatActivity {
         // Get the shape level
         mShapeLevel = Config.LEVEL_EASY;
         mShapes = SelectShapeController.getShapesFromLevel(mShapeLevel);
+        mAdapter = new ShapesGridViewAdapter(getApplicationContext(), mShapes);
+        mGridView.setAdapter(mAdapter);
     }
 
 

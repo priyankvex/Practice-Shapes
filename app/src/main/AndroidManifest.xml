@@ -27,6 +27,12 @@
                 android:value=".view.MainActivity" />
         </activity>
 
+        <!-- Metadata used by Sugar ORM-->
+        <meta-data android:name="DATABASE" android:value="practice_shapes_database.db" />
+        <meta-data android:name="VERSION" android:value="1" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.wordpress.priyankvex.practiceshapes.model" />
+
     </application>
 
 </manifest>
