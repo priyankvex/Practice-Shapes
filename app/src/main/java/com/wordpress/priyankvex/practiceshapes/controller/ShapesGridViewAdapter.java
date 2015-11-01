@@ -32,7 +32,6 @@ public final class ShapesGridViewAdapter extends BaseAdapter {
 
         this.mContext = context;
         inflater = LayoutInflater.from(context);
-        /*mImageLoader = ImageLoader.getInstance();*/
         this.mShapes = shapes;
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
@@ -57,7 +56,10 @@ public final class ShapesGridViewAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        // Set image and start here.
+        viewHolder.imageViewShape.setImageResource(shape.getResourceId());
+        if (shape.getMaxScore() != 100){
+            viewHolder.imageViewStar.setVisibility(View.INVISIBLE);
+        }
 
         return convertView;
 

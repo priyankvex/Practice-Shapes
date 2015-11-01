@@ -39,6 +39,7 @@ public class ApplicationController extends SugarApp{
                 shape.setBitmapPath(bitmapPath);
                 shape.setMaxScore(0);
                 shape.setLevel(Config.LEVEL_EASY);
+                shape.setResourceId(R.drawable.circle);
                 shape.save();
             }
             PreferencesController.setDatabaseInitStatus(true);

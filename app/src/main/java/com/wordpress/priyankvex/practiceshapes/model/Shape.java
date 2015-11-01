@@ -11,6 +11,7 @@ public class Shape extends SugarRecord<Shape>{
     private String bitmapPath;
     private float maxScore;
     private String level;
+    private int resourceId;
 
     public Shape(){}
 
@@ -37,5 +38,13 @@ public class Shape extends SugarRecord<Shape>{
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public int getResourceId() {
+        return resourceId;
+    }
+
+    public void setResourceId(int resourceId) {
+        this.resourceId = resourceId;
     }
 }
