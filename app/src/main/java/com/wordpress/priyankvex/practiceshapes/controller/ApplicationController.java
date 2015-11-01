@@ -3,6 +3,7 @@ package com.wordpress.priyankvex.practiceshapes.controller;
 import android.app.Application;
 import android.content.SharedPreferences;
 
+import com.wordpress.priyankvex.practiceshapes.Config;
 import com.wordpress.priyankvex.practiceshapes.R;
 import com.wordpress.priyankvex.practiceshapes.model.Shape;
 
@@ -35,6 +36,7 @@ public class ApplicationController extends Application{
                 Shape shape = new Shape();
                 shape.setBitmapPath(bitmapPath);
                 shape.setMaxScore(0);
+                shape.setLevel(Config.LEVEL_EASY);
                 shape.save();
             }
         }
