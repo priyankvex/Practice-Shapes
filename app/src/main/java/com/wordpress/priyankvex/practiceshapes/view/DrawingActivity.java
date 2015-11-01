@@ -17,6 +17,6 @@ public class DrawingActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawing);
         DrawingView drawingView = (DrawingView) findViewById(R.id.drawingView);
-        drawingView.drawOriginalShape();
+        drawingView.drawOriginalShape(null);
     }
 }

@@ -17,12 +17,14 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.wordpress.priyankvex.practiceshapes.R;
+import com.wordpress.priyankvex.practiceshapes.model.Shape;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by priyank on 1/11/15.
+ * Custom view on which drawing takes place.
  */
 public class DrawingView extends View {
 
@@ -81,11 +83,6 @@ public class DrawingView extends View {
      * The start time of the vibration
      */
     private long mVibrationStartTime;
-
-    /**
-     * Toast to display if user has been tracing wrongly for a long time
-     */
-    private Toast mErrorToast;
 
     /**
      * bounds of the touches
@@ -189,32 +186,19 @@ public class DrawingView extends View {
 
 
     // Will be used from MainActivity to set the base shape.
-    public void drawOriginalShape(){
+    public void drawOriginalShape(Shape shape){
         init();
-
-        String str = "W";
         Paint paintText = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintText.setColor(Color.BLACK);
         paintText.setStyle(Paint.Style.FILL);
-        int size = getResources().getDisplayMetrics().densityDpi/str.length();//Starting size of the text
-        float textHeight;
-        do {
-            paintText.setTextSize(++size);
-            textHeight = paintText.descent() - paintText.ascent();
-
-        } while(paintText.measureText(str) < mWidth * 0.8 && textHeight < mHeight *0.8);//setting the max size of the text for the given screen
-        mDrawPaint.setStrokeWidth(size * 3 / 182); //values got from experimenting
-
         TypedValue tv = new TypedValue();
         mContext.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true);
         int actionBarHeight = getResources().getDimensionPixelSize(tv.resourceId);
-        float textOffset = textHeight/ 2 - paintText.descent() - actionBarHeight/2;
-        //Drawing the text at the center of the view
-        /*mDrawCanvas.drawText(str, (mWidth - paintText.measureText(str)) / 2, (mHeight / 2) + textOffset, paintText);*/
         Bitmap icon = BitmapFactory.decodeResource(mContext.getResources(),
                 R.drawable.circle);
+        // Scales down bitmap ti fit in the width
         Bitmap bitmap = scaleDown(icon, mWidth, true);
-        mDrawCanvas.drawBitmap(bitmap, 0, mHeight/2 - mWidth/2, null);
+        mDrawCanvas.drawBitmap(bitmap, 0, mHeight/2 - actionBarHeight - mWidth/2, null);
         invalidate();
     }
 
