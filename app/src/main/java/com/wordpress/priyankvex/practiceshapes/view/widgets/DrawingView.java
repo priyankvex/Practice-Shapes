@@ -11,11 +11,13 @@ import android.graphics.Point;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.wordpress.priyankvex.practiceshapes.Config;
 import com.wordpress.priyankvex.practiceshapes.R;
 import com.wordpress.priyankvex.practiceshapes.model.Shape;
 
@@ -152,7 +154,7 @@ public class DrawingView extends View {
         mDrawPaint = new Paint();
         mDrawPaint.setColor(mTouchColour);
         mDrawPaint.setAntiAlias(true);
-        mDrawPaint.setStrokeWidth(15);
+        mDrawPaint.setStrokeWidth(10);
         //Setting the paint to draw round strokes
         mDrawPaint.setStyle(Paint.Style.STROKE);
         mDrawPaint.setStrokeJoin(Paint.Join.ROUND);
@@ -197,8 +199,10 @@ public class DrawingView extends View {
         Bitmap icon = BitmapFactory.decodeResource(mContext.getResources(),
                 R.drawable.circle);
         // Scales down bitmap ti fit in the width
-        Bitmap bitmap = scaleDown(icon, mWidth, true);
-        mDrawCanvas.drawBitmap(bitmap, 0, mHeight/2 - actionBarHeight - mWidth/2, null);
+        Bitmap bitmap = scaleDown(icon, mWidth*3/4, true);
+        float height = mHeight - actionBarHeight;
+        float heightOffset = height/2 - (mWidth*3/8);
+        mDrawCanvas.drawBitmap(bitmap, mWidth/8, heightOffset, null);
         invalidate();
     }
 
@@ -225,6 +229,7 @@ public class DrawingView extends View {
             // TODO : Log the values of both widths and heights and compare.
             int x = (int) (touchX * mCanvasBitmap.getWidth() / mWidth);
             int y = (int) (touchY * mCanvasBitmap.getHeight() / mHeight);
+            Log.d(Config.TAG, x + " " + touchX + " y " + y + " " + touchY);
 
             //updating the touch bounds
             if (x < minX)
@@ -243,8 +248,6 @@ public class DrawingView extends View {
                         mVibrator.vibrate(100);
                         if (mVibrationStartTime == 0) {
                             mVibrationStartTime = new Date().getTime();
-                        } else if (new Date().getTime() - mVibrationStartTime > 1000) {
-                            //mErrorToast.show();
                         }
                     }
                 } else {
