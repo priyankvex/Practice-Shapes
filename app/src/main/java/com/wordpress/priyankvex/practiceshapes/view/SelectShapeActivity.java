@@ -1,7 +1,10 @@
 package com.wordpress.priyankvex.practiceshapes.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.wordpress.priyankvex.practiceshapes.Config;
@@ -35,6 +38,14 @@ public class SelectShapeActivity extends AppCompatActivity {
         mShapes = SelectShapeController.getShapesFromLevel(mShapeLevel);
         mAdapter = new ShapesGridViewAdapter(getApplicationContext(), mShapes);
         mGridView.setAdapter(mAdapter);
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(SelectShapeActivity.this, DrawingActivity.class);
+                i.putExtra("shapeId", mShapes.get(position).getId());
+                startActivity(i);
+            }
+        });
     }
 
 

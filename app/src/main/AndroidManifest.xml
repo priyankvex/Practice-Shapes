@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wordpress.priyankvex.practiceshapes" >
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".controller.ApplicationController"
         android:allowBackup="true"
@@ -19,13 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".view.SelectShapeActivity"
             android:parentActivityName=".view.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.MainActivity" />
         </activity>
+        <activity android:name=".view.DrawingActivity"/>
 
         <!-- Metadata used by Sugar ORM-->
         <meta-data android:name="DATABASE" android:value="practice_shapes_database.db" />
