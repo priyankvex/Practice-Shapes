@@ -201,7 +201,7 @@ public class DrawingView extends View {
         // Scales down bitmap ti fit in the width
         Bitmap bitmap = scaleDown(icon, mWidth*3/4, true);
         float height = mHeight - actionBarHeight;
-        float heightOffset = height/2 - (mWidth*3/8);
+        float heightOffset = height/2 - (mWidth*4/8);
         mDrawCanvas.drawBitmap(bitmap, mWidth/8, heightOffset, null);
         invalidate();
     }
