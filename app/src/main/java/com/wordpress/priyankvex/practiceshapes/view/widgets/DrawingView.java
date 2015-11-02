@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
@@ -197,7 +198,7 @@ public class DrawingView extends View {
         mContext.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true);
         int actionBarHeight = getResources().getDimensionPixelSize(tv.resourceId);
         Bitmap icon = BitmapFactory.decodeResource(mContext.getResources(),
-                R.drawable.circle);
+                shape.getResourceId());
         // Scales down bitmap ti fit in the width
         Bitmap bitmap = scaleDown(icon, mWidth*3/4, true);
         float height = mHeight - actionBarHeight;
@@ -292,5 +293,23 @@ public class DrawingView extends View {
         Bitmap newBitmap = Bitmap.createScaledBitmap(realImage, width,
                 height, filter);
         return newBitmap;
+    }
+
+    /**
+     * Resets the canvas. Draws the shape again removing all the drawing.
+     * @param shape Shape object to be drawn on fresh canvas.
+     */
+    public void resetShape(Shape shape){
+        mDrawCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+        invalidate();
+        drawOriginalShape(shape);
+    }
+
+    /**
+     * Function to obtain the Score of the current trace
+     * @return Score of the current trace
+     */
+    public float getScore() {
+        return (mCorrectTouches + mWrongTouches !=0)?100* mCorrectTouches /(mCorrectTouches + mWrongTouches):0;
     }
 }
