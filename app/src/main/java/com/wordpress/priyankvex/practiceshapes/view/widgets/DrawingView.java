@@ -16,7 +16,6 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.wordpress.priyankvex.practiceshapes.Config;
 import com.wordpress.priyankvex.practiceshapes.R;
@@ -312,4 +311,5 @@ public class DrawingView extends View {
     public float getScore() {
         return (mCorrectTouches + mWrongTouches !=0)?100* mCorrectTouches /(mCorrectTouches + mWrongTouches):0;
     }
+
 }
