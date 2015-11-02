@@ -2,6 +2,7 @@ package com.wordpress.priyankvex.practiceshapes.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 
 import com.wordpress.priyankvex.practiceshapes.R;
 import com.wordpress.priyankvex.practiceshapes.view.widgets.DrawingView;
@@ -18,5 +19,12 @@ public class DrawingActivity extends AppCompatActivity{
         setContentView(R.layout.activity_drawing);
         DrawingView drawingView = (DrawingView) findViewById(R.id.drawingView);
         drawingView.drawOriginalShape(null);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_drawing, menu);
+
+        return true;
     }
 }

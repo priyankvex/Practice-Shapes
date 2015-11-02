@@ -4,4 +4,5 @@
     <string name="easy_level">EASY</string>
     <string name="medium_level">MEDIUM</string>
     <string name="hard_level">HARD</string>
+    <string name="action_save_bitmap">Save</string>
 </resources>
