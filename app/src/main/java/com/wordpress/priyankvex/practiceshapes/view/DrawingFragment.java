@@ -8,7 +8,7 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -45,7 +45,7 @@ public class DrawingFragment extends Fragment implements View.OnClickListener{
         mDrawingView = (DrawingView) rootView.findViewById(R.id.drawingView);
         mDrawingView.drawOriginalShape(DrawingActivity.shape);
         setHasOptionsMenu(true);
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return rootView;
     }
 
     @Override
@@ -77,6 +77,7 @@ public class DrawingFragment extends Fragment implements View.OnClickListener{
             case R.id.buttonDone:
                 // Evaluate trace here.
                 Toast.makeText(getActivity(), mDrawingView.getScore() + "", Toast.LENGTH_SHORT).show();
+                DrawingActivity.flipCard();
                 break;
         }
     }
