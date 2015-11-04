@@ -5,4 +5,6 @@
     <string name="medium_level">MEDIUM</string>
     <string name="hard_level">HARD</string>
     <string name="action_save_bitmap">Save</string>
+    <string name="text_your_score">Your Score</string>
+    <string name="text_best_score">Best Score</string>
 </resources>

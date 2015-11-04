@@ -76,7 +76,11 @@ public class DrawingFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.buttonDone:
                 // Evaluate trace here.
-                Toast.makeText(getActivity(), mDrawingView.getScore() + "", Toast.LENGTH_SHORT).show();
+                DrawingActivity.currentScore = mDrawingView.getScore();
+                if (DrawingActivity.currentScore > DrawingActivity.shape.getMaxScore()){
+                    DrawingActivity.shape.setMaxScore(DrawingActivity.currentScore);
+                    DrawingActivity.shape.save();
+                }
                 DrawingActivity.flipCard();
                 break;
         }

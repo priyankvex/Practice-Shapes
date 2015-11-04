@@ -17,6 +17,7 @@ public class DrawingActivity extends AppCompatActivity implements FragmentManage
     public static Shape shape;
     public static boolean mShowingBack = false;
     private static FragmentManager fragmentManager;
+    public static float currentScore = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

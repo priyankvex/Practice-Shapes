@@ -3,15 +3,53 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorDarkBackground"
-    >
+    android:id="@+id/ace">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is backside."
+        android:text="@string/text_your_score"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="84dp" />
+        android:layout_marginTop="53dp"
+        android:id="@+id/textView2"
+        android:textColor="@color/flatGreen"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="84.0"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp"
+        android:textSize="70sp"
+        android:id="@+id/textViewYourScore"
+        android:textColor="@color/colorPrimary"
+        />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_best_score"
+        android:textColor="@color/flatGreen"
+        android:layout_below="@+id/textViewYourScore"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+    />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="84.0"
+        android:textSize="50sp"
+        android:id="@+id/textViewBestScore"
+        android:textColor="@color/colorPrimary"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/buttonBack"
@@ -25,5 +63,17 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="30dp"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewMessage"
+        android:text="Great Job! Are you related to picasso?"
+        android:layout_marginBottom="28dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/greenSea"
+        android:layout_above="@+id/buttonBack"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
