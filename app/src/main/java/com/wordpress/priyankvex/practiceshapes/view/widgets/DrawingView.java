@@ -154,7 +154,7 @@ public class DrawingView extends View {
         mDrawPaint = new Paint();
         mDrawPaint.setColor(mTouchColour);
         mDrawPaint.setAntiAlias(true);
-        mDrawPaint.setStrokeWidth(10);
+        mDrawPaint.setStrokeWidth(8);
         //Setting the paint to draw round strokes
         mDrawPaint.setStyle(Paint.Style.STROKE);
         mDrawPaint.setStrokeJoin(Paint.Join.ROUND);
