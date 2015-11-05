@@ -28,7 +28,7 @@ public class ApplicationController extends SugarApp{
             easyShapesIds = new ArrayList<>();
             easyShapesIds.add(R.drawable.circle);
             easyShapesIds.add(R.drawable.triangle);
-            easyShapesIds.add(R.drawable.circle);
+            easyShapesIds.add(R.drawable.oval);
             easyShapesIds.add(R.drawable.circle);
             easyShapesIds.add(R.drawable.circle);
             easyShapesIds.add(R.drawable.circle);
