@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorDarkBackground"
+    android:layout_margin="30dp"
     >
 
     <ImageView
@@ -10,6 +11,7 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:id="@+id/imageView"
+        android:src="@drawable/oval"
         />
 
     <ImageView
