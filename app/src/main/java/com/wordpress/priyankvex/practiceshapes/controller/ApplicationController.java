@@ -1,6 +1,5 @@
 package com.wordpress.priyankvex.practiceshapes.controller;
 
-import android.app.Application;
 import android.content.SharedPreferences;
 
 import com.orm.SugarApp;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
  */
 public class ApplicationController extends SugarApp{
 
-    public ArrayList<String> easyShapesPath;
+    public ArrayList<Integer> easyShapesIds;
     public static SharedPreferences mSharedPreferences;
 
     @Override
@@ -24,22 +23,22 @@ public class ApplicationController extends SugarApp{
         super.onCreate();
         mSharedPreferences = getApplicationContext().getSharedPreferences("prefs", MODE_PRIVATE);
         // Check is database has been initiated or not.
-        if (!PreferencesController.getDatabaseInitStatus()){
+        if (true){
             // Load the bitmap paths
-            easyShapesPath = new ArrayList<>();
-            easyShapesPath.add("drawable://" + R.drawable.circle);
-            easyShapesPath.add("drawable://" + R.drawable.circle);
-            easyShapesPath.add("drawable://" + R.drawable.circle);
-            easyShapesPath.add("drawable://" + R.drawable.circle);
-            easyShapesPath.add("drawable://" + R.drawable.circle);
-            easyShapesPath.add("drawable://" + R.drawable.circle);
+            easyShapesIds = new ArrayList<>();
+            easyShapesIds.add(R.drawable.circle);
+            easyShapesIds.add(R.drawable.triangle);
+            easyShapesIds.add(R.drawable.circle);
+            easyShapesIds.add(R.drawable.circle);
+            easyShapesIds.add(R.drawable.circle);
+            easyShapesIds.add(R.drawable.circle);
             // Write the value in the database.
-            for (String bitmapPath : easyShapesPath){
+            Shape.deleteAll(Shape.class);
+            for (Integer resourceId : easyShapesIds){
                 Shape shape = new Shape();
-                shape.setBitmapPath(bitmapPath);
                 shape.setMaxScore(0);
                 shape.setLevel(Config.LEVEL_EASY);
-                shape.setResourceId(R.drawable.circle);
+                shape.setResourceId(resourceId);
                 shape.save();
             }
             PreferencesController.setDatabaseInitStatus(true);
