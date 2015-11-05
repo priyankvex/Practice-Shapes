@@ -1,6 +1,8 @@
 package com.wordpress.priyankvex.practiceshapes.controller;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -50,14 +52,16 @@ public final class ShapesGridViewAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             convertView = inflater.inflate(R.layout.layout_shapes_gridview, parent, false);
             viewHolder.imageViewShape = (ImageView) convertView.findViewById(R.id.imageView);
-            viewHolder.imageViewShape.setLayoutParams(new RelativeLayout.LayoutParams(mScreenWidth/2, mScreenWidth/2));
+            viewHolder.imageViewShape.setLayoutParams(new RelativeLayout.LayoutParams(mScreenWidth/2 - 10, mScreenWidth/2 - 10));
             viewHolder.imageViewStar = (ImageView) convertView.findViewById(R.id.imageViewStar);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.imageViewShape.setImageResource(shape.getResourceId());
+        Bitmap bitmap = scaleDown(shape.getResourceId(), (mScreenWidth/4), false);
+        viewHolder.imageViewShape.setImageBitmap(bitmap);
+
         if (shape.getMaxScore() != 100){
             viewHolder.imageViewStar.setVisibility(View.INVISIBLE);
         }
@@ -84,6 +88,21 @@ public final class ShapesGridViewAdapter extends BaseAdapter {
     class ViewHolder {
         ImageView imageViewShape;
         ImageView imageViewStar;
+    }
+
+    private Bitmap scaleDown(int resourceId, float maxImageSize,
+                            boolean filter) {
+
+        Bitmap realImage = BitmapFactory.decodeResource(mContext.getResources(), resourceId);
+        float ratio = Math.min(
+                (float) maxImageSize / realImage.getWidth(),
+                (float) maxImageSize / realImage.getHeight());
+        int width = Math.round((float) ratio * realImage.getWidth());
+        int height = Math.round((float) ratio * realImage.getHeight());
+
+        Bitmap newBitmap = Bitmap.createScaledBitmap(realImage, width,
+                height, filter);
+        return newBitmap;
     }
 
 }
