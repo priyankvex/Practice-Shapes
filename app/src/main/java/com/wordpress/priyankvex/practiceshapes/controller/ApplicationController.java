@@ -29,7 +29,7 @@ public class ApplicationController extends SugarApp{
             easyShapesIds.add(R.drawable.circle);
             easyShapesIds.add(R.drawable.triangle);
             easyShapesIds.add(R.drawable.oval);
-            easyShapesIds.add(R.drawable.circle);
+            easyShapesIds.add(R.drawable.square);
             easyShapesIds.add(R.drawable.circle);
             easyShapesIds.add(R.drawable.circle);
             // Write the value in the database.
