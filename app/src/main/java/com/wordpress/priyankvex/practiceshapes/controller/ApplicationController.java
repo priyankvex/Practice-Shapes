@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class ApplicationController extends SugarApp{
 
     public ArrayList<Integer> easyShapesIds;
+    public ArrayList<Integer> mediumShapesIds;
     public static SharedPreferences mSharedPreferences;
 
     @Override
@@ -38,6 +39,20 @@ public class ApplicationController extends SugarApp{
                 Shape shape = new Shape();
                 shape.setMaxScore(0);
                 shape.setLevel(Config.LEVEL_EASY);
+                shape.setResourceId(resourceId);
+                shape.save();
+            }
+            mediumShapesIds = new ArrayList<>();
+            mediumShapesIds.add(R.drawable.pentagon);
+            mediumShapesIds.add(R.drawable.pentagon);
+            mediumShapesIds.add(R.drawable.pentagon);
+            mediumShapesIds.add(R.drawable.pentagon);
+            mediumShapesIds.add(R.drawable.pentagon);
+            mediumShapesIds.add(R.drawable.pentagon);
+            for(Integer resourceId : mediumShapesIds){
+                Shape shape = new Shape();
+                shape.setMaxScore(0);
+                shape.setLevel(Config.LEVEL_MEDIUM);
                 shape.setResourceId(resourceId);
                 shape.save();
             }

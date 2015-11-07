@@ -16,6 +16,7 @@ import mehdi.sakout.fancybuttons.FancyButton;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     FancyButton buttonEasy;
+    FancyButton buttonMedium;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void findViewsById(){
         buttonEasy = (FancyButton) findViewById(R.id.buttonEasyLevel);
+        buttonMedium = (FancyButton) findViewById(R.id.buttonMediumLevel);
         buttonEasy.setOnClickListener(this);
+        buttonMedium.setOnClickListener(this);
     }
 
     @Override
@@ -60,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (id){
             case R.id.buttonEasyLevel:
                 i.putExtra(Config.KEY_LEVEL, Config.LEVEL_EASY);
+                break;
+            case R.id.buttonMediumLevel:
+                i.putExtra(Config.KEY_LEVEL, Config.LEVEL_MEDIUM);
                 break;
         }
         startActivity(i);

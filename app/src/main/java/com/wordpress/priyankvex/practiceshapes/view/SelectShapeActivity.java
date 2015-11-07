@@ -34,7 +34,7 @@ public class SelectShapeActivity extends AppCompatActivity {
         //noinspection ConstantConditions
         getSupportActionBar().setTitle("Select Shape");
         // Get the shape level
-        mShapeLevel = Config.LEVEL_EASY;
+        mShapeLevel = getIntent().getStringExtra(Config.KEY_LEVEL);
         mShapes = SelectShapeController.getShapesFromLevel(mShapeLevel);
         mAdapter = new ShapesGridViewAdapter(getApplicationContext(), mShapes);
         mGridView.setAdapter(mAdapter);
