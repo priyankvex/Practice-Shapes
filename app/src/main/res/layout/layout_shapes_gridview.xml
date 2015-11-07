@@ -17,7 +17,7 @@
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/star"
+        android:src="@drawable/staricon"
         android:id="@+id/imageViewStar"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
