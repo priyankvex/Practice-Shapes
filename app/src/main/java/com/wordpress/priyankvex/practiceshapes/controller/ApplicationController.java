@@ -48,7 +48,7 @@ public class ApplicationController extends SugarApp{
             mediumShapesIds.add(R.drawable.star);
             mediumShapesIds.add(R.drawable.heart);
             mediumShapesIds.add(R.drawable.crescent);
-            mediumShapesIds.add(R.drawable.pentagon);
+            mediumShapesIds.add(R.drawable.lightning);
             for(Integer resourceId : mediumShapesIds){
                 Shape shape = new Shape();
                 shape.setMaxScore(0);
