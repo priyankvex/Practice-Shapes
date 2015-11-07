@@ -44,7 +44,7 @@ public class ApplicationController extends SugarApp{
             }
             mediumShapesIds = new ArrayList<>();
             mediumShapesIds.add(R.drawable.pentagon);
-            mediumShapesIds.add(R.drawable.pentagon);
+            mediumShapesIds.add(R.drawable.hexagon);
             mediumShapesIds.add(R.drawable.pentagon);
             mediumShapesIds.add(R.drawable.pentagon);
             mediumShapesIds.add(R.drawable.pentagon);
