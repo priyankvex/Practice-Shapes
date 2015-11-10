@@ -63,7 +63,7 @@ public class ApplicationController extends SugarApp{
             hardShapesIds.add(R.drawable.cloud);
             hardShapesIds.add(R.drawable.flower);
             hardShapesIds.add(R.drawable.house);
-            hardShapesIds.add(R.drawable.bell);
+            hardShapesIds.add(R.drawable.gear);
             for (Integer resourceId : hardShapesIds){
                 Shape shape = new Shape();
                 shape.setMaxScore(0);
