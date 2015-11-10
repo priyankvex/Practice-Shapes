@@ -59,7 +59,7 @@ public class ApplicationController extends SugarApp{
             }
             hardShapesIds = new ArrayList<>();
             hardShapesIds.add(R.drawable.bell);
-            hardShapesIds.add(R.drawable.bell);
+            hardShapesIds.add(R.drawable.bulb);
             hardShapesIds.add(R.drawable.bell);
             hardShapesIds.add(R.drawable.bell);
             hardShapesIds.add(R.drawable.bell);
