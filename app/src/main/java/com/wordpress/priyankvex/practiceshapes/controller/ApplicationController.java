@@ -17,6 +17,7 @@ public class ApplicationController extends SugarApp{
 
     public ArrayList<Integer> easyShapesIds;
     public ArrayList<Integer> mediumShapesIds;
+    public ArrayList<Integer> hardShapesIds;
     public static SharedPreferences mSharedPreferences;
 
     @Override
@@ -53,6 +54,20 @@ public class ApplicationController extends SugarApp{
                 Shape shape = new Shape();
                 shape.setMaxScore(0);
                 shape.setLevel(Config.LEVEL_MEDIUM);
+                shape.setResourceId(resourceId);
+                shape.save();
+            }
+            hardShapesIds = new ArrayList<>();
+            hardShapesIds.add(R.drawable.bell);
+            hardShapesIds.add(R.drawable.bell);
+            hardShapesIds.add(R.drawable.bell);
+            hardShapesIds.add(R.drawable.bell);
+            hardShapesIds.add(R.drawable.bell);
+            hardShapesIds.add(R.drawable.bell);
+            for (Integer resourceId : hardShapesIds){
+                Shape shape = new Shape();
+                shape.setMaxScore(0);
+                shape.setLevel(Config.LEVEL_HARD);
                 shape.setResourceId(resourceId);
                 shape.save();
             }

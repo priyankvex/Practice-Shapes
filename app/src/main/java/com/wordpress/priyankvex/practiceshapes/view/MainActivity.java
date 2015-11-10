@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     FancyButton buttonEasy;
     FancyButton buttonMedium;
+    FancyButton buttonHard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +53,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void findViewsById(){
         buttonEasy = (FancyButton) findViewById(R.id.buttonEasyLevel);
         buttonMedium = (FancyButton) findViewById(R.id.buttonMediumLevel);
+        buttonHard = (FancyButton) findViewById(R.id.buttonHardLevel);
         buttonEasy.setOnClickListener(this);
         buttonMedium.setOnClickListener(this);
+        buttonHard.setOnClickListener(this);
     }
 
     @Override
@@ -66,6 +69,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.buttonMediumLevel:
                 i.putExtra(Config.KEY_LEVEL, Config.LEVEL_MEDIUM);
+                break;
+            case R.id.buttonHardLevel:
+                i.putExtra(Config.KEY_LEVEL, Config.LEVEL_HARD);
                 break;
         }
         startActivity(i);
