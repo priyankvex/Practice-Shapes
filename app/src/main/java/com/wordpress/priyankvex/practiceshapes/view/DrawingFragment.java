@@ -50,6 +50,7 @@ public class DrawingFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_drawing, menu);
     }
