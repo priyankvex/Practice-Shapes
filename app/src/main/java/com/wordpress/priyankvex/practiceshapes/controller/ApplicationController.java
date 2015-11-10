@@ -61,7 +61,7 @@ public class ApplicationController extends SugarApp{
             hardShapesIds.add(R.drawable.bell);
             hardShapesIds.add(R.drawable.bulb);
             hardShapesIds.add(R.drawable.cloud);
-            hardShapesIds.add(R.drawable.bell);
+            hardShapesIds.add(R.drawable.flower);
             hardShapesIds.add(R.drawable.bell);
             hardShapesIds.add(R.drawable.bell);
             for (Integer resourceId : hardShapesIds){
