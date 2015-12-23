@@ -7,4 +7,6 @@
     <string name="action_save_bitmap">Save</string>
     <string name="text_your_score">Your Score</string>
     <string name="text_best_score">Best Score</string>
+    <string name="setting_clear_data">Clear Data</string>
+    <string name="setting_vibrate">Vibrate for wrong touches?</string>
 </resources>
