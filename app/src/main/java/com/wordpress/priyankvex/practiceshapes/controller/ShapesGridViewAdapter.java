@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.wordpress.priyankvex.practiceshapes.R;
 import com.wordpress.priyankvex.practiceshapes.model.Shape;
 
@@ -69,8 +70,7 @@ public final class ShapesGridViewAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        Bitmap bitmap = scaleDown(shape.getResourceId(), (mScreenWidth/4), false);
-        viewHolder.imageViewShape.setImageBitmap(bitmap);
+        ImageLoader.getInstance().displayImage("drawable://" + shape.getResourceId(), viewHolder.imageViewShape, mOptions);
 
         if (shape.getMaxScore() != 100){
             viewHolder.imageViewStar.setVisibility(View.INVISIBLE);
@@ -100,19 +100,5 @@ public final class ShapesGridViewAdapter extends BaseAdapter {
         ImageView imageViewStar;
     }
 
-    private Bitmap scaleDown(int resourceId, float maxImageSize,
-                            boolean filter) {
-
-        Bitmap realImage = BitmapFactory.decodeResource(mContext.getResources(), resourceId);
-        float ratio = Math.min(
-                (float) maxImageSize / realImage.getWidth(),
-                (float) maxImageSize / realImage.getHeight());
-        int width = Math.round((float) ratio * realImage.getWidth());
-        int height = Math.round((float) ratio * realImage.getHeight());
-
-        Bitmap newBitmap = Bitmap.createScaledBitmap(realImage, width,
-                height, filter);
-        return newBitmap;
-    }
 
 }
