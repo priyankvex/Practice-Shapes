@@ -14,6 +14,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.wordpress.priyankvex.practiceshapes.R;
 import com.wordpress.priyankvex.practiceshapes.model.Shape;
 
@@ -30,6 +31,7 @@ public final class ShapesGridViewAdapter extends BaseAdapter {
     private List<Shape> mShapes = new ArrayList<>();
     private LayoutInflater inflater;
     private int mScreenWidth;
+    private DisplayImageOptions mOptions;
 
     public ShapesGridViewAdapter(Context context, List<Shape> shapes){
 
@@ -41,6 +43,14 @@ public final class ShapesGridViewAdapter extends BaseAdapter {
         Point size = new Point();
         display.getSize(size);
         mScreenWidth = size.x;
+        mOptions = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.drawable.loading)
+                .showImageOnFail(R.drawable.loading)
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .considerExifParams(true)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .build();
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
