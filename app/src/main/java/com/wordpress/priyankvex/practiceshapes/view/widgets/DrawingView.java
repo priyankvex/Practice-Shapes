@@ -19,6 +19,7 @@ import android.view.View;
 
 import com.wordpress.priyankvex.practiceshapes.Config;
 import com.wordpress.priyankvex.practiceshapes.R;
+import com.wordpress.priyankvex.practiceshapes.controller.PreferencesController;
 import com.wordpress.priyankvex.practiceshapes.model.Shape;
 
 import java.util.ArrayList;
@@ -172,7 +173,8 @@ public class DrawingView extends View {
 
         mScoring = true;
 
-        mVibrate = true; //Vibration on by default
+        mVibrate = PreferencesController.getVibrationPreference();
+        Log.d(Config.TAG, mVibrate + "");
 
         mTouchPoints = new ArrayList<>(); //Empty list as no touches yet
 
@@ -224,7 +226,7 @@ public class DrawingView extends View {
             float touchX = event.getX();
             float touchY = event.getY();
 
-
+            Log.d(Config.TAG, mVibrate + "");
             // mapping screen touch co-ordinates to image pixel co-ordinates
             // TODO : Log the values of both widths and heights and compare.
             int x = (int) (touchX * mCanvasBitmap.getWidth() / mWidth);

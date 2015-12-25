@@ -12,5 +12,6 @@ public class Config {
     public static String LEVEL_MEDIUM = "mediumLevel";
     public static String LEVEL_HARD = "hardLevel";
     public static String KEY_DATABASE_INIT = "databaseInit";
+    public static String KEY_VIBRATION_PREFERENCE = "vibrationPreference";
 
 }
