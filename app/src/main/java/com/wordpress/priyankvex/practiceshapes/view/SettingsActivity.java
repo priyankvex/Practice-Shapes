@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -27,6 +26,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     TextView textViewClearData;
     View layoutVibrationSetting;
     CheckBox checkBoxVibration;
+    TextView textViewLicenses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +36,10 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         textViewClearData = (TextView) findViewById(R.id.textViewClearData);
         layoutVibrationSetting = findViewById(R.id.layoutVibrationSetting);
         checkBoxVibration = (CheckBox) findViewById(R.id.checkBoxVibration);
+        textViewLicenses = (TextView) findViewById(R.id.textViewLicenses);
         textViewClearData.setOnClickListener(this);
         layoutVibrationSetting.setOnClickListener(this);
+        textViewLicenses.setOnClickListener(this);
         // Get the vibration setting
         boolean status = PreferencesController.getVibrationPreference();
         checkBoxVibration.setChecked(status);
@@ -55,6 +57,9 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 checkBoxVibration.toggle();
                 boolean status = checkBoxVibration.isChecked();
                 PreferencesController.setVibrationPreference(status);
+                break;
+            case R.id.textViewLicenses:
+                showLicensesDialog();
                 break;
         }
     }
@@ -123,5 +128,11 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             shape.save();
         }
         PreferencesController.setDatabaseInitStatus(true);
+    }
+
+    private void showLicensesDialog(){
+        Dialog dialog=new Dialog(this);
+        dialog.setContentView(R.layout.dialog_licenses);
+        dialog.show();
     }
 }

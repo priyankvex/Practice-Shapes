@@ -11,8 +11,6 @@
         android:paddingLeft="20dp"
         android:textSize="6pt"
         android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
         android:background="@drawable/textview_selector"
         android:id="@+id/textViewClearData"
         />
@@ -49,6 +47,18 @@
             />
 
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:text="@string/title_licenses"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:textSize="6pt"
+        android:clickable="true"
+        android:background="@drawable/textview_selector"
+        android:id="@+id/textViewLicenses"
+        />
 
 
 </LinearLayout>
