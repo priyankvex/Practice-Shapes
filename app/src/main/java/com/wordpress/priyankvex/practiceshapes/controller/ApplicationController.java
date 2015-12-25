@@ -27,8 +27,8 @@ public class ApplicationController extends SugarApp{
     public void onCreate() {
         super.onCreate();
         mSharedPreferences = getApplicationContext().getSharedPreferences("prefs", MODE_PRIVATE);
-        // Check is database has been initiated or not.
-        if (true){
+        // Check if database has been initiated or not.
+        if (!PreferencesController.getDatabaseInitStatus()){
             // Load the bitmap paths
             easyShapesIds = new ArrayList<>();
             easyShapesIds.add(R.drawable.circle);

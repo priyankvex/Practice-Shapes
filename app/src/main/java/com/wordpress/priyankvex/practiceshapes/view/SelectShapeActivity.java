@@ -35,9 +35,7 @@ public class SelectShapeActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Select Shape");
         // Get the shape level
         mShapeLevel = getIntent().getStringExtra(Config.KEY_LEVEL);
-        mShapes = SelectShapeController.getShapesFromLevel(mShapeLevel);
         mAdapter = new ShapesGridViewAdapter(getApplicationContext(), mShapes);
-        mGridView.setAdapter(mAdapter);
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -48,6 +46,11 @@ public class SelectShapeActivity extends AppCompatActivity {
         });
     }
 
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mShapes = SelectShapeController.getShapesFromLevel(mShapeLevel);
+        mAdapter = new ShapesGridViewAdapter(getApplicationContext(), mShapes);
+        mGridView.setAdapter(mAdapter);
+    }
 }
