@@ -88,14 +88,9 @@ public class DrawingView extends View {
     private long mVibrationStartTime;
 
     /**
-     * bounds of the touches
-     */
-    private int minX, minY, maxX, maxY;
-
-    /**
      * List of strokes. Each ArrayList<Point> is the touches from one MOTION_DOWN even to a MOTION_UP even
      */
-    private ArrayList<ArrayList<Point>> mTouchPoints;
+    private ArrayList<Point> mTouchPoints;
 
     /**
      * The context of the view
@@ -140,6 +135,8 @@ public class DrawingView extends View {
         mWidth = getResources().getDisplayMetrics().widthPixels;
         mHeight = getResources().getDisplayMetrics().heightPixels;
 
+        mTouchPoints = new ArrayList<>();
+
         //initializing without context
         init();
     }
@@ -165,11 +162,6 @@ public class DrawingView extends View {
         mWrongTouches = 0;
         mDraw = true;
         mVibrationStartTime = 0;
-
-        minX = mWidth;
-        maxX = -1;
-        minY = mHeight;
-        maxY = -1;
 
         mScoring = true;
 
@@ -227,20 +219,9 @@ public class DrawingView extends View {
             float touchY = event.getY();
 
             // mapping screen touch co-ordinates to image pixel co-ordinates
-            // TODO : Log the values of both widths and heights and compare.
             int x = (int) (touchX * mCanvasBitmap.getWidth() / mWidth);
             int y = (int) (touchY * mCanvasBitmap.getHeight() / mHeight);
-            Log.d(Config.TAG, x + " " + touchX + " y " + y + " " + touchY);
 
-            //updating the touch bounds
-            if (x < minX)
-                minX = x;
-            if (x > maxX)
-                maxX = x;
-            if (y < minY)
-                minY = y;
-            if (y > maxY)
-                maxY = y;
             if(mScoring) {
                 //checking if the touches are correct or wrong (inside or outside the boundary
                 if ((x >= 0 && x < mWidth && y >= 0 && y < mHeight && mCanvasBitmap.getPixel(x, y) == Color.TRANSPARENT) || (x < 0 || x >= mWidth || y < 0 || y >= mHeight)) {
@@ -251,16 +232,24 @@ public class DrawingView extends View {
                             mVibrationStartTime = new Date().getTime();
                         }
                     }
-                } else {
+                } else if (mCanvasBitmap.getPixel(x,y) == Color.BLACK){
+                    Point currentPoint = new Point(x,y);
+                    boolean oldPoint = false;
+                    for (Point p : mTouchPoints){
+                        if (currentPoint.equals(p)){
+                            Log.d(Config.TAG, "Old correct point");
+                            oldPoint = true;
+                            break;
+                        }
+                    }
+                    if (!oldPoint) mCorrectTouches++;
                     mVibrationStartTime = 0;
-                    mCorrectTouches++;
                 }
             }
 
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     mDrawPath.moveTo(touchX, touchY);
-                    mTouchPoints.add(new ArrayList<Point>());//ACTION_DOWN event means a new stroke so a new ArrayList
                     break;
                 case MotionEvent.ACTION_MOVE:
                     mDrawPath.lineTo(touchX, touchY);
@@ -273,8 +262,8 @@ public class DrawingView extends View {
                 default:
                     return false;
             }
-            //Adding the touch point to the last ArrayList
-            mTouchPoints.get(mTouchPoints.size() - 1).add(new Point((int) touchX, (int) touchY));
+            //Adding the touch point to the ArrayList
+            mTouchPoints.add(new Point((int) touchX, (int) touchY));
             invalidate();
             return true;
         }
@@ -310,7 +299,12 @@ public class DrawingView extends View {
      * @return Score of the current trace
      */
     public float getScore() {
-        return (mCorrectTouches + mWrongTouches !=0)?100* mCorrectTouches /(mCorrectTouches + mWrongTouches):0;
+        Log.d(Config.TAG, "Total touches : " + (mCorrectTouches+mWrongTouches));
+        Log.d(Config.TAG, "Correct touches : " + mCorrectTouches);
+        Log.d(Config.TAG, "Wrong touches : " + mWrongTouches);
+        Log.d(Config.TAG, "Total points recorded : " + mTouchPoints.size());
+        long totalTouches = Math.max(60, (mCorrectTouches+mWrongTouches));
+        return (mCorrectTouches + mWrongTouches !=0)?100* mCorrectTouches /(totalTouches):0;
     }
 
 }
