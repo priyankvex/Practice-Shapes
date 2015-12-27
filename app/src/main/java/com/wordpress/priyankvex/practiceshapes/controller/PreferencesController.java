@@ -37,7 +37,7 @@ public class PreferencesController {
      * @return boolean
      */
     public static boolean getVibrationPreference(){
-        return ApplicationController.mSharedPreferences.getBoolean(Config.KEY_VIBRATION_PREFERENCE, false);
+        return ApplicationController.mSharedPreferences.getBoolean(Config.KEY_VIBRATION_PREFERENCE, true);
     }
 
 }

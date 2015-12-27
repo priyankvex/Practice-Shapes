@@ -226,7 +226,6 @@ public class DrawingView extends View {
             float touchX = event.getX();
             float touchY = event.getY();
 
-            Log.d(Config.TAG, mVibrate + "");
             // mapping screen touch co-ordinates to image pixel co-ordinates
             // TODO : Log the values of both widths and heights and compare.
             int x = (int) (touchX * mCanvasBitmap.getWidth() / mWidth);
